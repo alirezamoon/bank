@@ -5,6 +5,7 @@ import theme from "../theme/theme"
 import { useCookies } from "react-cookie"
 import { useEffect } from "react"
 import { useRouter } from "next/router"
+import Layout from "../components/layout"
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [cookies] = useCookies()
@@ -16,7 +17,9 @@ function MyApp({ Component, pageProps }: AppProps) {
   }, [])
   return (
     <ThemeProvider theme={theme}>
-      <Component {...pageProps} />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </ThemeProvider>
   )
 }

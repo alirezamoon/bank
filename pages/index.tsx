@@ -1,8 +1,8 @@
 import type { NextPage } from "next"
-import { Button, Grid, Typography } from "@mui/material"
+import { Box, Button, Grid, Typography } from "@mui/material"
 
 const Home: NextPage = () => {
-  return <Grid></Grid>
+  return <Box>ffffffffffffffff</Box>
 }
 
 export default Home
