@@ -3,8 +3,11 @@ import { Box } from "@mui/system"
 import { useFormik } from "formik"
 import { loginSchema } from "../utils"
 import Link from "next/link"
+import { useCookies } from "react-cookie"
 
 const Login = () => {
+  const [_, setCookies] = useCookies(["token"])
+
   const formik = useFormik({
     initialValues: {
       username: "",
@@ -14,6 +17,9 @@ const Login = () => {
     validateOnBlur: false,
     onSubmit: (values) => {
       alert(JSON.stringify(values, null, 2))
+      const now = new Date()
+      const expires = now.setDate(now.getDate() + 2 * 7) // 2 Weeks from now
+      setCookies("token", values.username, { expires: new Date(expires) })
     },
   })
 

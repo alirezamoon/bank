@@ -46,10 +46,14 @@ const Register = () => {
           py: "60px",
           boxShadow: "1px 1px 3px #aaa",
           mx: "8px",
+          position: "relative",
         }}
       >
         <Link href="/login">
-          <Button sx={{ alignSelf: "start" }} color="blue">
+          <Button
+            sx={{ position: "absolute", top: "15px", left: "10px" }}
+            color="blue"
+          >
             <Icon component={CaretLeft} set="broken" primaryColor="#276678" />
           </Button>
         </Link>
