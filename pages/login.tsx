@@ -4,10 +4,11 @@ import { useFormik } from "formik"
 import { loginSchema } from "../utils"
 import Link from "next/link"
 import { useCookies } from "react-cookie"
+import { useRouter } from "next/router"
 
 const Login = () => {
   const [_, setCookies] = useCookies(["token"])
-
+  const router = useRouter()
   const formik = useFormik({
     initialValues: {
       username: "",
@@ -20,6 +21,7 @@ const Login = () => {
       const now = new Date()
       const expires = now.setDate(now.getDate() + 2 * 7) // 2 Weeks from now
       setCookies("token", values.username, { expires: new Date(expires) })
+      router.replace("/")
     },
   })
 
