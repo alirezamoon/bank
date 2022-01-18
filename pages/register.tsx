@@ -50,14 +50,7 @@ const Register = () => {
       >
         <Link href="/login">
           <Button sx={{ alignSelf: "start" }} color="blue">
-            <Icon
-              component={CaretLeft}
-              set="broken"
-              primaryColor="#276678"
-              //   sx={{ color: "#f00" }}
-              //   color="#f00"
-              //   secondaryColor="#f00"
-            />
+            <Icon component={CaretLeft} set="broken" primaryColor="#276678" />
           </Button>
         </Link>
         <Typography

@@ -106,7 +106,7 @@ const Login = () => {
         </Box>
         <Box sx={{ display: "felx", mt: "45px" }}>
           <Typography sx={{ display: "inline" }}>
-            Don't have an account?
+            Don&apos;t have an account?
           </Typography>
           <Link href="/register">
             <Button color="blue">Sing up</Button>
