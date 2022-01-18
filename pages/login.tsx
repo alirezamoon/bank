@@ -2,6 +2,7 @@ import { Button, styled, TextField, Typography } from "@mui/material"
 import { Box } from "@mui/system"
 import { useFormik } from "formik"
 import { loginSchema } from "../utils"
+import Link from "next/link"
 
 const Login = () => {
   const formik = useFormik({
@@ -11,27 +12,10 @@ const Login = () => {
     },
     validationSchema: loginSchema,
     validateOnBlur: false,
-    validateOnChange: false,
     onSubmit: (values) => {
       alert(JSON.stringify(values, null, 2))
     },
   })
-
-  // const formik = useFormik({
-  //   initialValues: {
-  //     name: "",
-  //   },
-  //   onSubmit: (values) => {
-  //     alert(JSON.stringify(values, null, 2))
-  //   },
-  // })
-
-  const LoginCard = styled(Box)(({ theme }) => ({
-    [theme.breakpoints.only("xs")]: {
-      paddingRight: "20px",
-      paddingLeft: "20px",
-    },
-  }))
 
   return (
     <Box
@@ -39,7 +23,6 @@ const Login = () => {
         display: "flex",
         background:
           "linear-gradient(90deg,#276678 0%,#1687A7 30%, #276678 100%)",
-        // bgcolor: { [theme.breakpoints.only("xs")]: "#f00" },
         height: "100vh",
         alignItems: "center",
         justifyContent: "center",
@@ -89,7 +72,11 @@ const Login = () => {
             sx={{ width: "100%", mb: "20px" }}
             name="username"
             onChange={formik.handleChange}
-            helperText={formik.errors.username}
+            helperText={
+              Boolean(formik.errors.username) && formik.touched.username
+                ? formik.errors.username
+                : null
+            }
             error={Boolean(formik.errors.username) && formik.touched.username}
           />
 
@@ -101,7 +88,11 @@ const Login = () => {
             sx={{ width: "100%", mb: "40px" }}
             name="password"
             onChange={formik.handleChange}
-            helperText={formik.errors.password}
+            helperText={
+              Boolean(formik.errors.password) && formik.touched.password
+                ? formik.errors.password
+                : null
+            }
             error={Boolean(formik.errors.password) && formik.touched.password}
           />
           <Button
@@ -117,7 +108,9 @@ const Login = () => {
           <Typography sx={{ display: "inline" }}>
             Don't have an account?
           </Typography>
-          <Button color="blue">Sing up</Button>
+          <Link href="/register">
+            <Button color="blue">Sing up</Button>
+          </Link>
         </Box>
       </Box>
     </Box>
